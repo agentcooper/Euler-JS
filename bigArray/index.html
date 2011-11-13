@@ -1,0 +1,36 @@
+<script>
+// Attempt to implement arrays, which hold more than 2^32 - 1
+// https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array
+
+function BigArray(length, initValue) {
+	var max = Math.pow(2, 32) - 1,
+		currentElements = 0;
+		current = 0;
+	
+	this.length = length;
+	
+	this._parts = [];
+	
+	for (var i = 0; i < Math.floor(length / max) + 1; i++) {
+		this._parts.push(new Array(max));
+	}
+	
+	this.push = function(el) {
+		if (currentElements < max) {
+			this._parts[current].push(el);
+			currentElements++;
+		} else {
+			currentElements = 0; current++;
+			this.push(el);
+		}
+	}
+	
+	this.get = function(n) {
+		return this._parts[Math.floor(n / max)][n % max];
+	}
+	
+	this.set = function(n, el) {
+		this._parts[Math.floor(n / max)][n % max] = el;
+	}
+}
+</script>
