@@ -1,0 +1,16 @@
+<script>
+var under = 1000,
+    multipliers = [3, 5],
+    sum = 0;
+
+for (var i = 0; i < under; i++) {
+    for (var j = 0; j < multipliers.length; j++) {
+        if (i % multipliers[j] == 0) {
+            sum += i;
+            break;
+        }
+    }
+}
+
+console.log(sum);
+</script>
