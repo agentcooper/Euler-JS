@@ -1,0 +1,12 @@
+<script src="../helpers/erato.js"></script>
+<script>
+var n = 10001,
+	s = [],
+	k = 100;
+	
+while (s.length < n) {
+	s = erato.get(k += 1000);
+}
+
+console.log(s[n - 1]);
+</script>
