@@ -1,0 +1,24 @@
+<script>
+// http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+
+var b = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function randomComparer(a, b) {
+	return (Math.round(Math.random()) - 0.5);
+}
+
+function fisherYattsShuffle(arr) {
+	var j, temp, res = arr.slice(), len = res.length;
+
+	for (var i = len - 1; i > 0; i--) {
+		j = Math.floor(Math.floor(Math.random() * (i + 1)));
+		temp = res[j]; res[j] = res[i]; res[i] = temp;
+	}
+	
+	return res;
+}
+
+for (var i = 0; i < 10; i++) {
+	console.log(fisherYattsShuffle(b), b.slice().sort(randomComparer));
+}
+</script>

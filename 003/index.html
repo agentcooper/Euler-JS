@@ -1,0 +1,18 @@
+<script src='../helpers/erato.js'></script>
+<script>
+var number = 600851475143,
+    possibleFactors = erato.get(Math.floor(Math.sqrt(number))),
+    factors = [],
+    max = 0;
+
+for (var i = possibleFactors.length - 1; i > 0; i--) {
+    var pF = possibleFactors[i];
+    if (number % pF == 0) {
+        max = pF;
+        break;
+    }
+}
+
+console.log(max);
+
+</script>

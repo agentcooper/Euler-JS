@@ -1,0 +1,33 @@
+<script>
+Number.prototype.isEven = function() {
+    return (this.valueOf() % 2 == 0);
+}
+
+var fibonacci = {
+    known : [1, 1],
+    last: 1,
+
+    get: function(n) {
+        if (n < this.known.length) return this.known[n];
+        else {
+            this.last = this.get(n-1) + this.get(n-2);
+            this.known.push(this.last);
+            return this.last;
+        }
+    }
+}
+
+var under = 4000000,
+
+    n = 0, f = 0,
+
+    sum = 0;
+
+while(f < under) {
+    f = fibonacci.get(n);
+    if (f.isEven()) sum += f;
+    n++;
+}
+
+console.log(sum);
+</script>

@@ -1,0 +1,16 @@
+<script>
+    var under = 100,
+        sumSquared = 0,
+        sqSum = 0,
+        result;
+
+    for (var i = 1; i <= under; i++) {
+        sqSum += i*i;
+        sumSquared += i;
+    }
+
+    sumSquared = sumSquared * sumSquared
+    result = sumSquared - sqSum;
+
+    document.write(result);
+</script>

@@ -1,0 +1,27 @@
+<script>
+function fib(n) {
+	return (Math.pow(phi, n) - Math.pow(1 - phi, n)) / Math.sqrt(5);
+}
+
+function nearest(n) {
+	return Math.pow(phi, n) / Math.sqrt(5);
+}
+
+// solution
+var phi = (1 + Math.sqrt(5)) / 2;
+
+function digits(x, power) {
+	return Math.floor(power * Math.log(x) * Math.LOG10E) + 1;
+}
+
+function fibDigits(n) {
+	return digits(phi / Math.pow(Math.sqrt(5), 1/n), n)
+}
+
+var nth = 1, 
+	len = 1000;
+	
+while (fibDigits(nth) < len) nth++;
+
+console.log(nth);
+</script>

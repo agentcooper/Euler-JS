@@ -1,0 +1,17 @@
+<script>
+// two examples of self-caching functions in javascript
+
+var fibonacci1 = (function () {
+    var cache = [1, 1], r;
+    return function (n) {
+        return cache[n] ||
+            (cache.push(r = fibonacci1(n - 2) + fibonacci1(n - 1)), r);
+    };
+}());
+
+var fibonacci2 = function(n) {
+    var cache = fibonacci2.cache || (console.log('cache created!'), fibonacci2.cache = [1, 1]), r;
+    return cache[n] ||
+        (cache.push(r = fibonacci2(n - 2) + fibonacci2(n - 1)), r);
+}
+</script>
