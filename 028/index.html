@@ -2,11 +2,9 @@
 // http://projecteuler.net/problem=28
 
 function range(first, last) {
-	var r = [];
-	for (var i = 0; i < last - first + 1; i++) {
-		r.push(first + i);
-	}
-	return r;
+    var len = last - first + 1, r = new Array(len);
+    while (len--) r[len] = first + len;
+    return r;
 }
 
 var n = 1001,
