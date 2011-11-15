@@ -1,15 +1,6 @@
 <script>
 // http://projecteuler.net/problem=28
 
-Array.prototype.filterIndex = function(cb) {
-	var self = this.valueOf(),
-		res = [];
-	for (var i = 0; i < self.length; i++) {
-		if (cb && cb(i, self)) res.push(self[i]);
-	}
-	return res;
-}
-
 function range(first, last) {
 	var r = [];
 	for (var i = 0; i < last - first + 1; i++) {
@@ -31,11 +22,9 @@ var n = 1001,
 while (last < Math.pow(n, 2)) {
 	turn = range(last + 1, last + 8*i);
 
-	sum += turn.filterIndex(function(i, arr) {
-		return (i + 1) % (arr.length / 4) == 0;
-	}).reduce(function(p, c) {
-		return p + c;
-	});
+	sum += turn.reduce(function(p, c, i, arr) {
+		return i % (arr.length / 4) == 1 ? p + c : p;
+	}, 0);
 	
 	last = turn[turn.length - 1];
 	i++;
