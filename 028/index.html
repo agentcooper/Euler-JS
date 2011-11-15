@@ -9,23 +9,23 @@ function range(first, last) {
 
 var n = 1001,
 
-	i = 1,
-	last = 1,
-	turn,
-	
-	sum = 1;
+    i = 1,
+    last = 1,
+    turn,
+    
+    sum = 1;
 
 // optimization is obvious, but I like it the 'clear' way
 
 while (last < Math.pow(n, 2)) {
-	turn = range(last + 1, last + 8*i);
+    turn = range(last + 1, last + 8*i);
 
-	sum += turn.reduce(function(p, c, i, arr) {
-		return i % (arr.length / 4) == 1 ? p + c : p;
-	}, 0);
-	
-	last = turn[turn.length - 1];
-	i++;
+    sum += turn.reduce(function(p, c, i, arr) {
+        return i % (arr.length / 4) == 1 ? p + c : p;
+    }, 0);
+    
+    last = turn[turn.length - 1];
+    i++;
 }
 
 console.log(sum);
